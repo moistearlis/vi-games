@@ -31,6 +31,8 @@
       mode: "text/plain"
     });
 
+    editor.focus(); // ← 追加！
+
     function check() {
       const value = editor.getValue().trim();
       const result = document.getElementById("result");
