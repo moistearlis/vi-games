@@ -2,30 +2,42 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>viコマンド練習ゲーム</title>
+  <title>Viコマンド練習ゲーム</title>
+  <link rel="stylesheet" href="https://unpkg.com/codemirror@5.65.13/lib/codemirror.css">
+  <script src="https://unpkg.com/codemirror@5.65.13/lib/codemirror.js"></script>
+  <script src="https://unpkg.com/codemirror@5.65.13/keymap/vim.js"></script>
   <style>
     body { font-family: sans-serif; padding: 1em; }
-    textarea { width: 100%; height: 150px; font-family: monospace; }
-    button { padding: 0.5em 1em; margin-top: 1em; }
+    #editor { border: 1px solid #ccc; }
+    .CodeMirror { height: 200px; }
+    button { margin-top: 1em; padding: 0.5em 1em; }
   </style>
 </head>
 <body>
   <h1>🎮 Viコマンド練習ゲーム</h1>
-  <p><strong>指令：</strong>「Hello を挿入せよ」</p>
+  <p><strong>ステージ 1：</strong>「Hello を挿入せよ」</p>
 
-  <textarea id="editor"></textarea><br>
+  <textarea id="editor"></textarea>
+  <br>
   <button onclick="check()">実行判定</button>
 
   <p id="result"></p>
 
   <script>
-    const editor = document.getElementById('editor');
+    // CodeMirror を Vim キーマップで起動
+    const editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+      lineNumbers: true,
+      keyMap: "vim",
+      mode: "text/plain"
+    });
+
     function check() {
-      const userInput = editor.value.trim();
-      if (userInput === 'Hello') {
-        document.getElementById('result').textContent = '✅ 成功！';
+      const value = editor.getValue().trim();
+      const result = document.getElementById("result");
+      if (value === "Hello") {
+        result.textContent = "✅ 成功！";
       } else {
-        document.getElementById('result').textContent = '❌ やり直し';
+        result.textContent = "❌ やり直し（現在の内容: " + value + "）";
       }
     }
   </script>
