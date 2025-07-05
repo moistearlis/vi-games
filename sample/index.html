@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>viコマンド練習ゲーム</title>
+  <style>
+    body { font-family: sans-serif; padding: 1em; }
+    textarea { width: 100%; height: 150px; font-family: monospace; }
+    button { padding: 0.5em 1em; margin-top: 1em; }
+  </style>
+</head>
+<body>
+  <h1>🎮 Viコマンド練習ゲーム</h1>
+  <p><strong>指令：</strong>「Hello を挿入せよ」</p>
+
+  <textarea id="editor"></textarea><br>
+  <button onclick="check()">実行判定</button>
+
+  <p id="result"></p>
+
+  <script>
+    const editor = document.getElementById('editor');
+    function check() {
+      const userInput = editor.value.trim();
+      if (userInput === 'Hello') {
+        document.getElementById('result').textContent = '✅ 成功！';
+      } else {
+        document.getElementById('result').textContent = '❌ やり直し';
+      }
+    }
+  </script>
+</body>
+</html>
