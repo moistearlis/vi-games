@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vi練習</title>
+    <link rel="stylesheet" href="https://codemirror.net/5/lib/codemirror.css" />
+    <script src="https://codemirror.net/5/lib/codemirror.js"></script>
+    <script src="https://codemirror.net/5/mode/javascript/javascript.js"></script>
+    <script src="https://codemirror.net/5/keymap/vim.js"></script>
+    <style>
+        .CodeMirror {
+            height: auto;
+            border: 1px solid #ccc;
+            font-family: monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>指令: `Hello` を [[ ]] に入力せよ</h2>
+    <textarea id="editor">console.log([[        ]]);</textarea>
+    <div id="result"></div>
+
+    <script>
+        const editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+            mode: "javascript",
+            keyMap: "vim",
+            lineNumbers: true,
+        });
+
+        const expected = "console.log(Hello);"
+
+        CodeMirror.Vim.defineEx("wq", "wq", function (cm) {
+            const input = cm.getValue().replace(/\s+/g, '');
+            const target = expected.replace(/\s+/g, '');
+            document.getElementById("result").innerText =
+                input === target ? "✅ 正解" : "❌ 不正解";
+        });
+    </script>
+</body>
+
+</html>

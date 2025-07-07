@@ -1,0 +1,5 @@
+{
+  "description": "プレースホルダーに Hello を入力せよ",
+  "initialText": "console.log([[        ]]);",
+  "expectedText": "console.log(Hello);"
+}
