@@ -1,0 +1,59 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+#game-container {
+    width: 80%;
+    max-width: 800px;
+}
+
+#editor {
+    border: 1px solid #ccc;
+    height: 400px;
+    width: 100%;
+    background-color: #282c34;
+    color: #abb2bf;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 10px;
+    white-space: pre-wrap;
+    overflow-y: auto;
+    position: relative;
+}
+
+#target-word-container, #score-container {
+    margin-bottom: 10px;
+}
+
+#command-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #282c34;
+    color: #abb2bf;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+#command-bar.hidden {
+    display: none;
+}
+
+#command-bar input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    color: #abb2bf;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+#command-bar input:focus {
+    outline: none;
+}
